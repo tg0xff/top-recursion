@@ -5,7 +5,7 @@ function mergeSort(arr) {
   const right = mergeSort(arr.slice(mid));
 
   const merged = [];
-  while (left && right) {
+  while (left.length > 0 && right.length > 0) {
     const leftNum = left[left.length - 1];
     const rightNum = right[right.length - 1];
     if (leftNum > rightNum) {
@@ -15,9 +15,9 @@ function mergeSort(arr) {
     }
   }
 
-  if (left) {
+  if (left.length > 0) {
     merged.concat(left);
-  } else if (right) {
+  } else if (right.length > 0) {
     merged.concat(right);
   }
 
