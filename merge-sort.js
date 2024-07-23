@@ -5,22 +5,25 @@ function mergeSort(arr) {
   const right = mergeSort(arr.slice(mid));
 
   const merged = [];
-  while (left.length > 0 && right.length > 0) {
-    const leftNum = left[left.length - 1];
-    const rightNum = right[right.length - 1];
-    if (leftNum > rightNum) {
-      merged.push(left.pop());
+  let lIndex = 0;
+  let rIndex = 0;
+  for (let i = 0; left[lIndex] !== undefined && right[rIndex] !== undefined; i++) {
+    const lNum = left[lIndex];
+    const rNum = right[rIndex];
+    if (lNum < rNum) {
+      merged[i] = lNum;
+      lIndex++;
     } else {
-      merged.push(right.pop());
+      merged[i] = rNum;
+      rIndex++;
     }
   }
 
-  if (left.length > 0) {
-    merged.concat(left);
-  } else if (right.length > 0) {
-    merged.concat(right);
+  if (lIndex < left.length) {
+    return merged.concat(left.slice(lIndex));
+  } else if (rIndex < right.length) {
+    return merged.concat(right.slice(rIndex));
   }
-
   return merged;
 }
 
