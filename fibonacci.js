@@ -15,7 +15,7 @@ function fibsRec(n) {
   if (n <= 1) return [0];
   if (n === 2) return [0, 1];
   const prevNum = fibsRec(n - 1);
-  return [].concat(prevNum, [prevNum[prevNum.length - 1] + prevNum[prevNum.length - 2]]);
+  return [].concat(prevNum, prevNum[prevNum.length - 1] + prevNum[prevNum.length - 2]);
 }
 
 console.log("fibsRec(8):");
